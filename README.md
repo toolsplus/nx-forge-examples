@@ -14,11 +14,9 @@ To enable the `package` target on a Forge app project simply add the following `
 
 ### Forge executor
 
-We define a `forge` executor target definition in `nx.json` that allows to run arbitrary Forge CLI commands for any Forge app.
+The plugin adds an inferred `forge` executor target to all projects it detects as Forge apps (projects that contain a manifest.yml). This allows you to run arbitrary Forge CLI commands for any Forge app.
 
-To enable the `forge` target on a Forge app project simply add the following `forge` target definition to the project's project.json: `"forge": {}`.
-
-After that, run any Forge CLI command as follows:
+To run any Forge CLI command for a Forge app project run:
 
 ```shell
 nx forge <my-forge-app> variables list

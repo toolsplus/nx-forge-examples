@@ -16,14 +16,6 @@
         "outputPath": "dist/{projectRoot}"
       }
     },
-    "forge": {
-      "dependsOn": ["package"],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "forge",
-        "cwd": "dist/{projectRoot}"
-      }
-    },
     "@nx/esbuild:esbuild": {
       "cache": true,
       "dependsOn": ["^build"],
