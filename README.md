@@ -1,5 +1,7 @@
 # Nx Forge Examples
 
+[![CI](https://github.com/toolsplus/nx-forge-examples/actions/workflows/ci-main.yml/badge.svg)](https://github.com/toolsplus/nx-forge-examples/actions/workflows/ci-main.yml)
+
 This repository contains example [Nx Forge](https://github.com/toolsplus/nx-forge) setups with different tooling.
 
 ## General setup
