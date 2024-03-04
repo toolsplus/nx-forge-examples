@@ -1,0 +1,21 @@
+modules:
+  jira:globalPage:
+    - key: global-page
+      title: Jira Global Page
+      resource: global-page
+      resolver:
+        function: resolver
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: global-page
+    path: jira-global-page
+permissions:
+  content:
+    styles:
+      - unsafe-inline
+app:
+  id: ari:cloud:ecosystem::app/6e7a0383-1aae-4633-ab40-0b87ecc14e72
+  runtime:
+    name: nodejs18.x
