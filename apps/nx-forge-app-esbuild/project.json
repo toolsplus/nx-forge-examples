@@ -38,6 +38,19 @@
       }
     },
     "package": {},
+    "deploy": {
+      "configurations": {
+        "development": {
+          "manifestTransform": "$ ~> |app|{'licensing': {'enabled': false}}| ~> |resources[0]|{'key': $env('APP_ID')}|"
+        },
+        "staging": {
+          "manifestTransform": "$ ~> |app|{'licensing': {'enabled': false}}|"
+        },
+        "production": {
+          "manifestTransform": "$ ~> |app|{'licensing': {'enabled': true}}|"
+        }
+      }
+    },
     "install": {
       "executor": "@toolsplus/nx-forge:install",
       "options": {

@@ -16,6 +16,6 @@ permissions:
     styles:
       - unsafe-inline
 app:
-  id: ari:cloud:ecosystem::app/7ea70c22-9ab1-4867-a9f4-226a46691343
+  id: ari:cloud:ecosystem::app/b3d89666-b390-4398-a99e-d11e09c01bfd
   runtime:
     name: nodejs18.x

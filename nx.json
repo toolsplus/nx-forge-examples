@@ -13,7 +13,8 @@
       "dependsOn": ["build"],
       "executor": "@toolsplus/nx-forge:package",
       "options": {
-        "outputPath": "dist/{projectRoot}"
+        "outputPath": "dist/{projectRoot}",
+        "uiKit2Packaging": true
       }
     },
     "@nx/esbuild:esbuild": {
@@ -47,6 +48,11 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "@nx/rollup:rollup": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -76,9 +82,36 @@
       },
       "library": {
         "style": "@emotion/styled",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "jest"
       }
     }
   },
-  "plugins": ["@toolsplus/nx-forge"]
+  "plugins": [
+    "@toolsplus/nx-forge",
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "previewTargetName": "preview",
+        "testTargetName": "test",
+        "serveTargetName": "serve",
+        "serveStaticTargetName": "serve-static"
+      }
+    },
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
+      }
+    }
+  ]
 }
