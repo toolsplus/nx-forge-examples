@@ -4,7 +4,6 @@
   "sourceRoot": "apps/nx-forge-app-webpack/src",
   "projectType": "application",
   "targets": {
-    "forge": {},
     "build": {
       "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
@@ -24,11 +23,8 @@
         "production": {}
       }
     },
-    "package": {},
     "install": {
-      "executor": "@toolsplus/nx-forge:install",
       "options": {
-        "outputPath": "dist/apps/nx-forge-app-webpack",
         "product": "jira"
       }
     },
@@ -46,9 +42,6 @@
           "buildTarget": "nx-forge-app-webpack:build:production"
         }
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",

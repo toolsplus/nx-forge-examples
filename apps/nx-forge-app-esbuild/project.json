@@ -4,7 +4,6 @@
   "sourceRoot": "apps/nx-forge-app-esbuild/src",
   "projectType": "application",
   "targets": {
-    "forge": {},
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
@@ -37,7 +36,6 @@
         }
       }
     },
-    "package": {},
     "deploy": {
       "configurations": {
         "development": {
@@ -52,9 +50,7 @@
       }
     },
     "install": {
-      "executor": "@toolsplus/nx-forge:install",
       "options": {
-        "outputPath": "dist/apps/nx-forge-app-esbuild",
         "product": "jira"
       }
     },
@@ -72,9 +68,6 @@
           "buildTarget": "nx-forge-app-esbuild:build:production"
         }
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
