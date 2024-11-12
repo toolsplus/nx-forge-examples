@@ -1,14 +1,14 @@
 modules:
   jira:globalPage:
     - key: global-page
-      title: Nx Forge Examples (Custom UI)
+      title: Nx Forge Examples (esbuild/Custom UI)
       resource: custom-ui
       resolver:
         function: resolver
   jira:adminPage:
     - key: admin-page
       render: native
-      title: Nx Forge Examples (UI Kit 2)
+      title: Nx Forge Examples (esbuild/UI Kit 2)
       resource: ui-kit
       resolver:
         function: resolver
@@ -27,4 +27,4 @@ permissions:
 app:
   id: ari:cloud:ecosystem::app/e9e5afa1-9fa9-4786-a6f5-3d4f5d9a05bd
   runtime:
-    name: nodejs18.x
+    name: nodejs20.x

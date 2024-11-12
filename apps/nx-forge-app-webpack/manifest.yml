@@ -1,7 +1,7 @@
 modules:
   jira:globalPage:
     - key: global-page
-      title: Jira Global Page
+      title: Nx Forge Examples (Webpack/Custom UI)
       resource: global-page
       resolver:
         function: resolver
@@ -18,4 +18,4 @@ permissions:
 app:
   id: ari:cloud:ecosystem::app/b3d89666-b390-4398-a99e-d11e09c01bfd
   runtime:
-    name: nodejs18.x
+    name: nodejs20.x

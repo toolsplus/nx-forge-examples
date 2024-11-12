@@ -113,5 +113,6 @@
         "previewTargetName": "preview"
       }
     }
-  ]
+  ],
+  "useLegacyCache": true
 }
