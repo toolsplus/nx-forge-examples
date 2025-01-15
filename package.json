@@ -29,7 +29,7 @@
     "@swc/core": "1.5.7",
     "@swc/helpers": "0.5.11",
     "@testing-library/react": "15.0.6",
-    "@toolsplus/nx-forge": "5.2.2",
+    "@toolsplus/nx-forge": "5.2.3",
     "@types/jest": "29.5.14",
     "@types/node": "~18.16.9",
     "@types/react": "18.3.1",
@@ -65,7 +65,7 @@
   "dependencies": {
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
-    "@forge/react": "^10.0.0",
+    "@forge/react": "^10.10.1",
     "@forge/resolver": "^1.5.28",
     "axios": "^1.6.0",
     "react": "18.3.1",

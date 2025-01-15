@@ -27,4 +27,4 @@ permissions:
 app:
   id: ari:cloud:ecosystem::app/e9e5afa1-9fa9-4786-a6f5-3d4f5d9a05bd
   runtime:
-    name: nodejs20.x
+    name: nodejs22.x
