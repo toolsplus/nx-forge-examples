@@ -7,7 +7,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         name: Checkout [${{ github.ref_name }}]
         with:
           fetch-depth: 0
@@ -15,7 +15,7 @@ jobs:
         name: Derive appropriate SHAs for base and head for `nx affected` commands
       - uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version: 'lts/-1'
       - run: npm ci --legacy-peer-deps
       - run: npx nx affected --target=format:check --parallel=2
       - run: npx nx affected --target=build --parallel=2
