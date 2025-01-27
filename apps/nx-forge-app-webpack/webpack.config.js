@@ -1,13 +1,25 @@
-const { composePlugins, withNx } = require('@nx/webpack');
+const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
+const { join } = require('path');
 
-// Nx plugins for webpack.
-module.exports = composePlugins(
-  withNx({
-    target: 'node',
-  }),
-  (config) => {
-    // Update the webpack config as needed here.
-    // e.g. `config.plugins.push(new MyPlugin())`
-    return config;
-  }
-);
+module.exports = {
+  output: {
+    path: join(__dirname, '../../dist/apps/nx-forge-app-webpack/src'),
+    library: {
+      type: 'commonjs2',
+    },
+    clean: true
+  },
+  plugins: [
+    new NxAppWebpackPlugin({
+      target: 'node',
+      compiler: 'tsc',
+      main: './src/index.ts',
+      outputFileName: 'index.js',
+      tsConfig: './tsconfig.app.json',
+      assets: ['./src/assets'],
+      optimization: false,
+      outputHashing: 'none',
+      deleteOutputPath: false,
+    }),
+  ],
+};

@@ -18,6 +18,8 @@ modules:
 resources:
   - key: custom-ui
     path: jira-global-page
+    tunnel:
+      port: 4201
   - key: ui-kit
     path: ui-kit-app
 permissions:

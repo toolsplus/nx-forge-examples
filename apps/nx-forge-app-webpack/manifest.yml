@@ -11,6 +11,8 @@ modules:
 resources:
   - key: global-page
     path: jira-global-page
+    tunnel:
+      port: 4201
 permissions:
   content:
     styles:

@@ -4,43 +4,9 @@
   "sourceRoot": "apps/nx-forge-app-webpack/src",
   "projectType": "application",
   "targets": {
-    "build": {
-      "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "target": "node",
-        "compiler": "tsc",
-        "outputPath": "dist/apps/nx-forge-app-webpack/src",
-        "main": "apps/nx-forge-app-webpack/src/index.ts",
-        "outputFileName": "index.js",
-        "tsConfig": "apps/nx-forge-app-webpack/tsconfig.app.json",
-        "assets": [],
-        "webpackConfig": "apps/nx-forge-app-webpack/webpack.config.js"
-      },
-      "configurations": {
-        "development": {},
-        "production": {}
-      }
-    },
     "install": {
       "options": {
         "product": "jira"
-      }
-    },
-    "serve": {
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "nx-forge-app-webpack:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "nx-forge-app-webpack:build:development"
-        },
-        "production": {
-          "buildTarget": "nx-forge-app-webpack:build:production"
-        }
       }
     },
     "test": {

@@ -54,19 +54,9 @@
         "product": "jira"
       }
     },
-    "serve": {
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
+    "tunnel": {
       "options": {
-        "buildTarget": "nx-forge-app-esbuild:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "nx-forge-app-esbuild:build:development"
-        },
-        "production": {
-          "buildTarget": "nx-forge-app-esbuild:build:production"
-        }
+        "preTunnelTimeout": 10000
       }
     },
     "test": {
