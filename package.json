@@ -29,7 +29,7 @@
     "@swc/core": "1.5.7",
     "@swc/helpers": "0.5.11",
     "@testing-library/react": "15.0.6",
-    "@toolsplus/nx-forge": "^6.0.1-beta.1",
+    "@toolsplus/nx-forge": "^6.0.1",
     "@types/jest": "29.5.14",
     "@types/node": "~18.16.9",
     "@types/react": "18.3.1",
