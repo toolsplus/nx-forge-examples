@@ -8,3 +8,8 @@ resolver.define('getText', (req) => {
 });
 
 export const handler = resolver.getDefinitions();
+
+export function messageLogger (payload: any) {
+  console.log(`Message: ${payload.message}`);
+  return `Successfully logged payload: ${payload.message}`
+}

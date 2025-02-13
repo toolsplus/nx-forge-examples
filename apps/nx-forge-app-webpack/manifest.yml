@@ -1,4 +1,28 @@
 modules:
+  rovo:agent:
+    - key: hello-world-agent
+      name: Hello world agent
+      description: An Agent for testing Forge agent functionality
+      prompt: resource:prompts-resource;prompts/log-prompt.txt
+      conversationStarters:
+        - Log a message to Forge logs
+      actions:
+        - hello-world-logger
+  action:
+    - key: hello-world-logger
+      name: Log action
+      function: messageLogger
+      actionVerb: TRIGGER
+      description: >
+        When a user asks to log a message, this action logs the message to the
+        Forge logs.
+      inputs:
+        message:
+          title: Message
+          type: string
+          required: true
+          description: |
+            "The message that the user has requested be logged to Forge logs"
   jira:globalPage:
     - key: global-page
       title: Nx Forge Examples (Webpack/Custom UI)
@@ -8,7 +32,11 @@ modules:
   function:
     - key: resolver
       handler: index.handler
+    - key: messageLogger
+      handler: index.messageLogger
 resources:
+  - key: prompts-resource
+    path: src/assets
   - key: global-page
     path: jira-global-page
     tunnel:
