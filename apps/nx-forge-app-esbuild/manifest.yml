@@ -22,6 +22,8 @@ resources:
       port: 4201
   - key: ui-kit
     path: ui-kit-app
+  - key: modal-dialog
+    path: modal-dialog
 permissions:
   content:
     styles:

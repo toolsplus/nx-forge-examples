@@ -41,6 +41,10 @@ resources:
     path: jira-global-page
     tunnel:
       port: 4201
+  - key: modal-dialog
+    path: modal-dialog
+    tunnel:
+      port: 4202
 permissions:
   content:
     styles:

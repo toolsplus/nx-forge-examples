@@ -17,6 +17,9 @@
         "uiKit2Packaging": true
       }
     },
+    "deploy": {
+      "dependsOn": ["package"]
+    },
     "@nx/esbuild:esbuild": {
       "cache": true,
       "dependsOn": ["^build"],
