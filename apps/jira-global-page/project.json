@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/jira-global-page/src",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
@@ -73,6 +74,5 @@
         "jestConfig": "apps/jira-global-page/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'nx-forge-app-esbuild',
   preset: '../../jest.preset.js',

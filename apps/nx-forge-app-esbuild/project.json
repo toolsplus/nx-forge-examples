@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/nx-forge-app-esbuild/src",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
@@ -49,11 +50,6 @@
         }
       }
     },
-    "install": {
-      "options": {
-        "product": "jira"
-      }
-    },
     "tunnel": {
       "options": {
         "preTunnelTimeout": 10000
@@ -66,6 +62,5 @@
         "jestConfig": "apps/nx-forge-app-esbuild/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

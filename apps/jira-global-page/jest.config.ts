@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'jira-global-page',
   preset: '../../jest.preset.js',

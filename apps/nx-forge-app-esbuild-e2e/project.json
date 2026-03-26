@@ -1,8 +1,8 @@
 {
   "name": "nx-forge-app-esbuild-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": ["nx-forge-app-esbuild"],
   "projectType": "application",
+  "implicitDependencies": ["nx-forge-app-esbuild"],
   "targets": {
     "e2e": {
       "executor": "@nx/jest:jest",

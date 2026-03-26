@@ -3,12 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/nx-forge-app-webpack/src",
   "projectType": "application",
+  "tags": [],
   "targets": {
-    "install": {
-      "options": {
-        "product": "jira"
-      }
-    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
@@ -16,6 +12,5 @@
         "jestConfig": "apps/nx-forge-app-webpack/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }
