@@ -1,18 +1,14 @@
 const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
-const { join } = require('path');
 
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/nx-forge-app-webpack/src'),
-    library: {
-      type: 'commonjs2',
-    },
-    clean: true
+    filename: 'index.js',
   },
   plugins: [
     new NxAppWebpackPlugin({
       target: 'node',
       compiler: 'tsc',
+      outputPath: '../../dist/apps/nx-forge-app-webpack/src',
       main: './src/index.ts',
       outputFileName: 'index.js',
       tsConfig: './tsconfig.app.json',
