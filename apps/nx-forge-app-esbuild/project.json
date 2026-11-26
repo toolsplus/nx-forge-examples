@@ -11,7 +11,7 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/nx-forge-app-esbuild/src",
+        "outputPath": "dist/apps/nx-forge-app-esbuild/functions",
         "format": ["cjs"],
         "bundle": true,
         "main": "apps/nx-forge-app-esbuild/src/index.ts",
@@ -22,19 +22,16 @@
           "sourcemap": true,
           "outExtension": {
             ".js": ".js"
+          },
+          "define": {
+            "process.env.NODE_ENV": "\"production\""
           }
-        }
+        },
+        "thirdParty": true
       },
       "configurations": {
         "development": {},
-        "production": {
-          "esbuildOptions": {
-            "sourcemap": false,
-            "outExtension": {
-              ".js": ".js"
-            }
-          }
-        }
+        "production": {}
       }
     },
     "deploy": {
