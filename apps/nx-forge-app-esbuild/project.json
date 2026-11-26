@@ -54,13 +54,6 @@
       "options": {
         "preTunnelTimeout": 10000
       }
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "apps/nx-forge-app-esbuild/jest.config.ts"
-      }
     }
   }
 }

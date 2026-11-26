@@ -25,39 +25,38 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
-    "@nx/eslint:lint": {
-      "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js",
-        "{workspaceRoot}/eslint.config.mjs"
-      ]
-    },
-    "@nx/jest:jest": {
-      "cache": true,
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
-      "options": {
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
+    "e2e": [
+      {
+        "filter": {
+          "plugin": "@nx/jest/plugin"
+        },
+        "configurations": {
+          "ci": {
+            "ci": true,
+            "coverage": true
+          }
+        },
+        "options": {
+          "passWithNoTests": true
         }
       }
-    },
-    "@nx/webpack:webpack": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/rollup:rollup": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    }
+    ],
+    "test": [
+      {
+        "filter": {
+          "plugin": "@nx/jest/plugin"
+        },
+        "configurations": {
+          "ci": {
+            "ci": true,
+            "coverage": true
+          }
+        },
+        "options": {
+          "passWithNoTests": true
+        }
+      }
+    ]
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
@@ -101,6 +100,14 @@
       }
     },
     {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        }
+      }
+    },
+    {
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build",
@@ -122,7 +129,32 @@
       "options": {
         "testTargetName": "test"
       }
+    },
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": {
+        "targetName": "test"
+      },
+      "include": [
+        "apps/jira-global-page/**/*",
+        "apps/nx-forge-app-esbuild/**/*",
+        "apps/nx-forge-app-webpack/**/*",
+        "apps/ui-kit-app/**/*"
+      ]
+    },
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": {
+        "targetName": "e2e"
+      },
+      "include": [
+        "apps/nx-forge-app-esbuild-e2e/**/*",
+        "apps/nx-forge-app-webpack-e2e/**/*"
+      ]
     }
   ],
-  "analytics": false
+  "analytics": false,
+  "affected": {
+    "legacy": true
+  }
 }

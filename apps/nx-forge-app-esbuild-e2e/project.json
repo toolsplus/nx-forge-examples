@@ -5,15 +5,24 @@
   "implicitDependencies": ["nx-forge-app-esbuild"],
   "targets": {
     "e2e": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
-      "options": {
-        "jestConfig": "apps/nx-forge-app-esbuild-e2e/jest.config.ts",
-        "passWithNoTests": true
-      }
+      "outputs": [
+        "{workspaceRoot}/coverage/{e2eProjectRoot}",
+        "{workspaceRoot}/coverage/nx-forge-app-esbuild-e2e"
+      ]
     },
     "lint": {
-      "executor": "@nx/eslint:lint"
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore",
+        "{workspaceRoot}/eslint.config.js",
+        "{workspaceRoot}/eslint.config.mjs",
+        "{workspaceRoot}/tools/eslint-rules/**/*",
+        {
+          "externalDependencies": ["eslint"]
+        }
+      ]
     }
   }
 }
