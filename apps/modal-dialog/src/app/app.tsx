@@ -1,7 +1,17 @@
 import styled from '@emotion/styled';
+import { view } from '@forge/bridge';
 
-const StyledApp = styled.div`
-  // Your style here
+const StyledApp = styled.main`
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  padding: 16px;
 `;
 
 export function App() {
@@ -9,15 +19,12 @@ export function App() {
     <StyledApp>
       <h1>A modal dialog</h1>
       <p>
-        Dolor minim voluptate dolore proident voluptate ea nostrud laboris ex
-        enim laboris. Do exercitation fugiat pariatur consequat consectetur. Ut
-        nulla nostrud ex dolore nostrud est voluptate sunt amet consectetur
-        cupidatat cillum anim exercitation quis. Velit ipsum ullamco incididunt
-        incididunt culpa adipisicing. Non proident reprehenderit et laborum
-        proident in aliqua do proident dolor ut ex nisi. Veniam cillum ipsum
-        cupidatat irure exercitation ex do voluptate commodo veniam minim minim
-        reprehenderit.
+        The page that opened this dialog receives the payload passed to
+        view.close() in its onClose callback.
       </p>
+      <button type="button" onClick={() => view.close({ closedBy: 'button' })}>
+        Close
+      </button>
     </StyledApp>
   );
 }

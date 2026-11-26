@@ -1,36 +1,39 @@
-const { composePlugins, withNx } = require('@nx/webpack');
+const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
+const { NxReactWebpackPlugin } = require('@nx/react/webpack-plugin');
 const { join } = require('path');
 
-module.exports = composePlugins(
-  withNx({
-    target: 'web',
-    compiler: 'babel',
-    main: 'apps/modal-dialog/src/main.tsx',
-    tsConfig: 'apps/modal-dialog/tsconfig.app.json',
-    assets: [
-      'apps/modal-dialog/src/favicon.ico',
-      'apps/modal-dialog/src/assets',
-      'apps/modal-dialog/src/index.html',
-    ],
-    outputPath: 'dist/apps/modal-dialog',
-    outputHashing: 'none',
-  }),
-  (config) => {
-    config.output = {
-      ...config.output,
-      path: join(__dirname, '../../dist/apps/modal-dialog'),
-      clean: true,
-    };
+const isProduction = process.env['NODE_ENV'] === 'production';
 
-    config.devServer = {
-      port: 4200,
-      historyApiFallback: {
-        index: '/index.html',
-        disableDotRule: true,
-        htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
-      },
-    };
-
-    return config;
-  }
-);
+module.exports = {
+  output: {
+    path: join(__dirname, '../../dist/apps/modal-dialog'),
+  },
+  devServer: {
+    // `nx tunnel` serves the app on the tunnel port from the Forge manifest.
+    port: 4200,
+    historyApiFallback: {
+      index: '/index.html',
+      disableDotRule: true,
+      htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
+    },
+  },
+  plugins: [
+    new NxAppWebpackPlugin({
+      tsConfig: './tsconfig.app.json',
+      compiler: 'babel',
+      main: './src/main.tsx',
+      index: './src/index.html',
+      // Forge serves Custom UI assets from a relative path.
+      baseHref: '.',
+      assets: ['./src/favicon.ico', './src/assets'],
+      styles: [],
+      outputHashing: isProduction ? 'all' : 'none',
+      optimization: isProduction,
+    }),
+    new NxReactWebpackPlugin({
+      // Uncomment this line if you don't want to use SVGR
+      // See: https://react-svgr.com/
+      // svgr: false
+    }),
+  ],
+};

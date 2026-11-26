@@ -11,9 +11,7 @@
     },
     "package": {
       "dependsOn": ["build"],
-      "executor": "@toolsplus/nx-forge:package",
       "options": {
-        "outputPath": "dist/{projectRoot}",
         "uiKit2Packaging": true
       }
     },
@@ -25,39 +23,22 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
-    "@nx/eslint:lint": {
-      "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore",
-        "{workspaceRoot}/eslint.config.js",
-        "{workspaceRoot}/eslint.config.mjs"
-      ]
-    },
-    "@nx/jest:jest": {
-      "cache": true,
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
-      "options": {
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
+    "test": [
+      {
+        "filter": {
+          "plugin": "@nx/jest/plugin"
+        },
+        "configurations": {
+          "ci": {
+            "ci": true,
+            "coverage": true
+          }
+        },
+        "options": {
+          "passWithNoTests": true
         }
       }
-    },
-    "@nx/webpack:webpack": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/rollup:rollup": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    }
+    ]
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
@@ -101,12 +82,11 @@
       }
     },
     {
-      "plugin": "@nx/vite/plugin",
+      "plugin": "@nx/js/typescript",
       "options": {
-        "buildTargetName": "build",
-        "previewTargetName": "preview",
-        "serveTargetName": "serve",
-        "serveStaticTargetName": "serve-static"
+        "typecheck": {
+          "targetName": "typecheck"
+        }
       }
     },
     {
@@ -118,9 +98,9 @@
       }
     },
     {
-      "plugin": "@nx/vitest",
+      "plugin": "@nx/jest/plugin",
       "options": {
-        "testTargetName": "test"
+        "targetName": "test"
       }
     }
   ],

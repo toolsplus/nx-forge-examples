@@ -4,48 +4,69 @@
 
 This repository contains example [Nx Forge](https://github.com/toolsplus/nx-forge) setups with different tooling.
 
-## General setup
+## Projects
 
-This workspace is a standard Nx workspace. However, some default configurations in [the `nx.json`](https://nx.dev/reference/nx-json#nxjson) worth mentioning:
+| Project                | Type                    | Description                                                                             |
+| ---------------------- | ----------------------- | --------------------------------------------------------------------------------------- |
+| `nx-forge-app-esbuild` | Forge app               | Built with esbuild. Has a Jira global page (Custom UI) and a Jira admin page (UI Kit).  |
+| `nx-forge-app-webpack` | Forge app               | Built with Webpack. Has a Jira global page (Custom UI) and a Rovo agent with an action. |
+| `jira-global-page`     | Custom UI (React)       | Calls the app's resolver and opens `modal-dialog`.                                      |
+| `modal-dialog`         | Custom UI (React)       | A modal dialog that the global page opens with the `Modal` API of `@forge/bridge`.      |
+| `ui-kit-app`           | UI Kit (`@forge/react`) | Calls the app's resolver.                                                               |
 
-### Package executor
+Each Forge app's `manifest.yml` references Custom UI and UI Kit projects by their project name in `resources[].path`. Nx Forge adds them to the project graph and copies their build output into the Forge app when packaging. See [the project graph docs](https://toolsplus.github.io/nx-forge/concepts/project-graph).
 
-We define a default `package` target configuration in the `nx.json` > `targetDefaults.package` that defines that the package target depends on the build target, i.e. before running the package target the build target has to complete.
+The Forge apps use [manual packaging](https://github.com/toolsplus/nx-forge/blob/beta/docs/guides/upgrading-to-v10.md): the `build` target writes a bundle with all npm dependencies to `dist/apps/<app>/functions`, and `forge deploy` uploads it as it is.
 
-To enable the `package` target on a Forge app project simply add the following `package` target definition to the project's project.json: `"package": {}`.
+## Tasks
 
-### Forge executor
+Nx Forge infers the `package`, `deploy`, `tunnel`, `register` and `forge` targets for every project with a `manifest.yml`. The `nx.json` adds two target defaults:
 
-The plugin adds an inferred `forge` executor target to all projects it detects as Forge apps (projects that contain a manifest.yml). This allows you to run arbitrary Forge CLI commands for any Forge app.
+- `package` depends on `build`, and enables `uiKit2Packaging`, which UI Kit resources need.
+- `deploy` depends on `package`.
 
-To run any Forge CLI command for a Forge app project run:
+Deploy a Forge app to the development environment with:
 
 ```shell
-nx forge <my-forge-app> variables list
+npx nx deploy nx-forge-app-esbuild
 ```
+
+Start a tunnel, including dev servers for the Custom UI projects, with:
+
+```shell
+npx nx tunnel nx-forge-app-esbuild
+```
+
+Run any other Forge CLI command for a Forge app with the `forge` target, for example:
+
+```shell
+npx nx forge nx-forge-app-esbuild variables list
+```
+
+The workspace installs the Forge CLI as a dev dependency, so these commands use the version in `package.json`. Log in once with `npx forge login`.
 
 ## Running tasks
 
 To execute tasks with Nx use the following syntax:
 
-```
-nx <target> <project> <...options>
+```shell
+npx nx <target> <project> <...options>
 ```
 
 You can also run multiple targets:
 
-```
-nx run-many -t <target1> <target2>
+```shell
+npx nx run-many -t <target1> <target2>
 ```
 
 ..or add `-p` to filter specific projects
 
-```
-nx run-many -t <target1> <target2> -p <proj1> <proj2>
+```shell
+npx nx run-many -t <target1> <target2> -p <proj1> <proj2>
 ```
 
-Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/core-features/run-tasks).
+Run `npx nx show project <project>` to see a project's targets, including the inferred ones. Learn more [in the docs](https://nx.dev/features/run-tasks).
 
 ## Explore the Project Graph
-Run `nx graph` to show the graph of the workspace.
-It will show tasks that you can run with Nx.
+
+Run `npx nx graph` to show the graph of the workspace.

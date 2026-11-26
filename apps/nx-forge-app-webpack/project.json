@@ -4,13 +4,6 @@
   "sourceRoot": "apps/nx-forge-app-webpack/src",
   "projectType": "application",
   "tags": [],
-  "targets": {
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "apps/nx-forge-app-webpack/jest.config.ts"
-      }
-    }
-  }
+  "// targets": "to see all targets run: nx show project nx-forge-app-webpack --web",
+  "targets": {}
 }

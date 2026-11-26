@@ -36,7 +36,8 @@ modules:
       handler: index.messageLogger
 resources:
   - key: prompts-resource
-    path: src/assets
+    # The build copies src/assets into the function bundle directory.
+    path: functions/assets
   - key: global-page
     path: jira-global-page
     tunnel:
@@ -50,6 +51,9 @@ permissions:
     styles:
       - unsafe-inline
 app:
+  package:
+    bundler: manual@2026
+    path: functions
   id: ari:cloud:ecosystem::app/b3d89666-b390-4398-a99e-d11e09c01bfd
   runtime:
     name: nodejs24.x

@@ -7,16 +7,18 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         name: Checkout [${{ github.ref_name }}]
         with:
           fetch-depth: 0
-      - uses: nrwl/nx-set-shas@v4
+      - uses: nrwl/nx-set-shas@v5
         name: Derive appropriate SHAs for base and head for `nx affected` commands
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 'lts/-1'
-      - run: npm ci --legacy-peer-deps
-      - run: npx nx affected --target=format:check --parallel=2
-      - run: npx nx affected --target=build --parallel=2
-      - run: npx nx affected --target=test --parallel=2
+          # Match the nodejs24.x runtime in the Forge app manifests.
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx nx format:check
+      # package checks that each Forge app bundle includes all its dependencies.
+      - run: npx nx affected -t lint test build package --parallel=3
