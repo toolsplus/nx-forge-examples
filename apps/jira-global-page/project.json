@@ -5,21 +5,6 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "build": {
-      "outputs": ["{workspaceRoot}/dist/apps/jira-global-page"],
-      "defaultConfiguration": "production",
-      "configurations": {
-        "development": {},
-        "production": {}
-      }
-    },
-    "serve": {
-      "defaultConfiguration": "development",
-      "configurations": {
-        "development": {},
-        "production": {}
-      }
-    },
     "lint": {
       "inputs": [
         "default",

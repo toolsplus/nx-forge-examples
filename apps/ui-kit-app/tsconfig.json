@@ -2,10 +2,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "allowJs": false,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "ignoreDeprecations": "6.0"
+    "allowSyntheticDefaultImports": true
   },
   "files": [],
   "include": [],

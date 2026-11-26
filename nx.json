@@ -11,9 +11,7 @@
     },
     "package": {
       "dependsOn": ["build"],
-      "executor": "@toolsplus/nx-forge:package",
       "options": {
-        "outputPath": "dist/{projectRoot}",
         "uiKit2Packaging": true
       }
     },
@@ -25,22 +23,6 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
-    "e2e": [
-      {
-        "filter": {
-          "plugin": "@nx/jest/plugin"
-        },
-        "configurations": {
-          "ci": {
-            "ci": true,
-            "coverage": true
-          }
-        },
-        "options": {
-          "passWithNoTests": true
-        }
-      }
-    ],
     "test": [
       {
         "filter": {
@@ -108,15 +90,6 @@
       }
     },
     {
-      "plugin": "@nx/vite/plugin",
-      "options": {
-        "buildTargetName": "build",
-        "previewTargetName": "preview",
-        "serveTargetName": "serve",
-        "serveStaticTargetName": "serve-static"
-      }
-    },
-    {
       "plugin": "@nx/webpack/plugin",
       "options": {
         "buildTargetName": "build",
@@ -125,36 +98,11 @@
       }
     },
     {
-      "plugin": "@nx/vitest",
-      "options": {
-        "testTargetName": "test"
-      }
-    },
-    {
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      },
-      "include": [
-        "apps/jira-global-page/**/*",
-        "apps/nx-forge-app-esbuild/**/*",
-        "apps/nx-forge-app-webpack/**/*",
-        "apps/ui-kit-app/**/*"
-      ]
-    },
-    {
-      "plugin": "@nx/jest/plugin",
-      "options": {
-        "targetName": "e2e"
-      },
-      "include": [
-        "apps/nx-forge-app-esbuild-e2e/**/*",
-        "apps/nx-forge-app-webpack-e2e/**/*"
-      ]
+      }
     }
   ],
-  "analytics": false,
-  "affected": {
-    "legacy": true
-  }
+  "analytics": false
 }

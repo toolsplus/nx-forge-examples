@@ -16,7 +16,8 @@
         "bundle": true,
         "main": "apps/nx-forge-app-esbuild/src/index.ts",
         "tsConfig": "apps/nx-forge-app-esbuild/tsconfig.app.json",
-        "assets": [],
+        "outputFileName": "index.js",
+        "assets": ["apps/nx-forge-app-esbuild/src/assets"],
         "generatePackageJson": false,
         "esbuildOptions": {
           "sourcemap": true,
@@ -37,7 +38,7 @@
     "deploy": {
       "configurations": {
         "development": {
-          "manifestTransform": "$ ~> |app|{'licensing': {'enabled': false}}| ~> |resources[0]|{'key': $env('APP_ID')}|"
+          "manifestTransform": "$ ~> |app|{'licensing': {'enabled': false}}|"
         },
         "staging": {
           "manifestTransform": "$ ~> |app|{'licensing': {'enabled': false}}|"

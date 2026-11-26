@@ -36,7 +36,8 @@ modules:
       handler: index.messageLogger
 resources:
   - key: prompts-resource
-    path: src/assets
+    # The build copies src/assets into the function bundle directory.
+    path: functions/assets
   - key: global-page
     path: jira-global-page
     tunnel:

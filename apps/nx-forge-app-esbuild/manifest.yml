@@ -24,6 +24,8 @@ resources:
     path: ui-kit-app
   - key: modal-dialog
     path: modal-dialog
+    tunnel:
+      port: 4202
 permissions:
   content:
     styles:

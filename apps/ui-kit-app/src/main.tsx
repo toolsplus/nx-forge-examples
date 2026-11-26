@@ -5,5 +5,5 @@ import App from './app/app';
 ForgeReconciler.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

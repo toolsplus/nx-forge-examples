@@ -9,7 +9,8 @@ resolver.define('getText', (req) => {
 
 export const handler = resolver.getDefinitions();
 
-export function messageLogger (payload: any) {
+// Rovo calls this action function with the inputs declared in the manifest.
+export function messageLogger(payload: { message: string }) {
   console.log(`Message: ${payload.message}`);
-  return `Successfully logged payload: ${payload.message}`
+  return `Successfully logged payload: ${payload.message}`;
 }

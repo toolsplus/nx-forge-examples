@@ -2,11 +2,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "allowJs": false,
-    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "jsxImportSource": "@emotion/react",
-    "ignoreDeprecations": "6.0"
+    "jsxImportSource": "@emotion/react"
   },
   "files": [],
   "include": [],
